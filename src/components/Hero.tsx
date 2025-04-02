@@ -1,29 +1,21 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
-
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
-  return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
+  return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className={`max-w-3xl transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Hi, I'm <span className="gradient-text">Alex Chen</span>
+            Hi, I'm <span className="gradient-text"> Jitendra Aluri</span>
           </h1>
           <h2 className={`text-2xl md:text-4xl mb-6 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Data Scientist & Machine Learning Enthusiast
           </h2>
-          <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            I transform complex data into actionable insights using Python, machine learning, and statistical analysis. 
-            Currently pursuing my Master's in Data Science at Stanford University.
-          </p>
+          <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>I transform complex data into actionable insights using Python, machine learning, and statistical analysis. Currently pursuing my UnderGraduation in Data Science at Vignan University.</p>
           
           <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Button className="bg-primary hover:bg-primary/90 text-white transition-transform duration-300 hover:scale-105">
@@ -49,8 +41,6 @@ const Hero = () => {
           <ArrowDown className="h-4 w-4" />
         </a>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
