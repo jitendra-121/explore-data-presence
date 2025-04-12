@@ -1,29 +1,28 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       toast({
         title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        description: "Thanks for reaching out. I'll get back to you soon."
       });
-      
+
       // Reset form
       setName("");
       setEmail("");
@@ -31,9 +30,7 @@ const Contact = () => {
       setLoading(false);
     }, 1000);
   };
-  
-  return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-background to-accent/50">
+  return <section id="contact" className="section-padding bg-gradient-to-b from-background to-accent/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
@@ -54,7 +51,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <a href="mailto:alex@example.com" className="text-muted-foreground hover:text-primary">alex@example.com</a>
+                  <a href="mailto:alex@example.com" className="text-muted-foreground hover:text-primary">jitendraaluri10@gmail.com</a>
                 </div>
               </div>
               
@@ -64,7 +61,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-medium">LinkedIn</p>
-                  <a href="https://linkedin.com/in/alexchen" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">linkedin.com/in/alexchen</a>
+                  <a href="https://linkedin.com/in/alexchen" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">www.linkedin.com/in/jitendra-aluri-677236304</a>
                 </div>
               </div>
               
@@ -92,37 +89,17 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                <Input 
-                  id="name" 
-                  value={name} 
-                  onChange={(e) => setName(e.target.value)} 
-                  placeholder="Your Name" 
-                  required 
-                />
+                <Input id="name" value={name} onChange={e => setName(e.target.value)} placeholder="Your Name" required />
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  value={email} 
-                  onChange={(e) => setEmail(e.target.value)} 
-                  placeholder="your@email.com" 
-                  required 
-                />
+                <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" required />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <Textarea 
-                  id="message" 
-                  value={message} 
-                  onChange={(e) => setMessage(e.target.value)} 
-                  placeholder="Your message here..." 
-                  rows={5} 
-                  required 
-                />
+                <Textarea id="message" value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message here..." rows={5} required />
               </div>
               
               <Button type="submit" className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90" disabled={loading}>
@@ -132,8 +109,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
