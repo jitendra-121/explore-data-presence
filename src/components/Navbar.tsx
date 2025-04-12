@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Code, Menu, X, Download } from "lucide-react";
+import { Code, Menu, X, Download, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +53,9 @@ const Navbar = () => {
           <a href="#projects" className="text-sm hover:text-primary transition-colors">Projects</a>
           <a href="#skills" className="text-sm hover:text-primary transition-colors">Skills</a>
           <a href="#contact" className="text-sm hover:text-primary transition-colors">Contact</a>
+          <Link to="/resume" className="text-sm hover:text-primary transition-colors flex items-center">
+            <FileText className="h-4 w-4 mr-1" /> CV
+          </Link>
           <Button 
             size="sm" 
             className="bg-gradient-to-r from-primary to-secondary hover:opacity-90"
@@ -75,6 +79,9 @@ const Navbar = () => {
             <a href="#projects" className="text-lg hover:text-primary" onClick={toggleMenu}>Projects</a>
             <a href="#skills" className="text-lg hover:text-primary" onClick={toggleMenu}>Skills</a>
             <a href="#contact" className="text-lg hover:text-primary" onClick={toggleMenu}>Contact</a>
+            <Link to="/resume" className="text-lg hover:text-primary flex items-center" onClick={toggleMenu}>
+              <FileText className="h-4 w-4 mr-1" /> CV
+            </Link>
             <Button 
               className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 w-full"
               onClick={handleResumeClick}
