@@ -12,18 +12,18 @@ const Hero = () => {
   }, []);
   
   return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Banner image above the header section with left-to-right animation */}
-        <div className={`w-full mb-12 md:mb-16 overflow-hidden transition-all duration-1000 delay-100`}>
-          <div className={`w-full transition-all duration-1500 ${isLoaded ? 'translate-x-0' : '-translate-x-full'}`}>
-            <img 
-              src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" 
-              alt="Crafting AI-Driven Solutions for a Better World" 
-              className="w-full rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 max-w-5xl mx-auto"
-            />
-          </div>
+      {/* Full-width banner image with left-to-right animation */}
+      <div className="w-full overflow-hidden mb-16">
+        <div className={`w-full transition-all duration-1500 ${isLoaded ? 'translate-x-0' : '-translate-x-full'}`}>
+          <img 
+            src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" 
+            alt="Crafting AI-Driven Solutions for a Better World" 
+            className="w-full shadow-lg hover:shadow-xl transition-all duration-300"
+          />
         </div>
-        
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-10">
           <Avatar className={`w-48 h-48 border-4 border-primary/50 transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
             <AvatarImage alt="Jitendra Aluri" src="/lovable-uploads/5b7502da-a465-4d09-8179-f3883bbb3e61.jpg" className="object-contain" />
