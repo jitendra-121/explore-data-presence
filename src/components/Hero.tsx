@@ -2,23 +2,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-  
   return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-10">
           <Avatar className={`w-48 h-48 border-4 border-primary/50 transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
-            <AvatarImage 
-              src="/placeholder.svg" 
-              alt="Jitendra Aluri" 
-              className="object-cover"
-            />
+            <AvatarImage alt="Jitendra Aluri" src="/lovable-uploads/5b7502da-a465-4d09-8179-f3883bbb3e61.jpg" className="object-contain" />
             <AvatarFallback>JA</AvatarFallback>
           </Avatar>
           
@@ -55,5 +48,4 @@ const Hero = () => {
       </div>
     </section>;
 };
-
 export default Hero;
