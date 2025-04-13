@@ -11,6 +11,13 @@ const Hero = () => {
     setIsLoaded(true);
   }, []);
   
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       {/* Full-width banner image with left-to-right animation */}
       <div className="w-full overflow-hidden mb-16">
@@ -40,10 +47,17 @@ const Hero = () => {
             <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>I transform complex data into actionable insights using Python, machine learning, and statistical analysis. Currently pursuing my UnderGraduation in Data Science at Vignan University.</p>
             
             <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <Button className="bg-primary hover:bg-primary/90 text-white transition-transform duration-300 hover:scale-105">
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-white transition-transform duration-300 hover:scale-105"
+                onClick={() => scrollToSection('projects')}
+              >
                 View Projects
               </Button>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 transition-transform duration-300 hover:scale-105">
+              <Button 
+                variant="outline" 
+                className="border-primary text-primary hover:bg-primary/10 transition-transform duration-300 hover:scale-105"
+                onClick={() => scrollToSection('contact')}
+              >
                 Contact Me
               </Button>
             </div>
