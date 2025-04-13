@@ -1,12 +1,16 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+  
   return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-10">
@@ -34,6 +38,15 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        
+        {/* Banner image below the header section */}
+        <div className={`w-full mt-12 md:mt-16 transition-all duration-1000 delay-800 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <img 
+            src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" 
+            alt="Crafting AI-Driven Solutions for a Better World" 
+            className="w-full rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 max-w-5xl mx-auto"
+          />
+        </div>
       </div>
       
       <div className={`absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-gradient-to-l from-secondary/20 to-primary/5 blur-3xl rounded-full transition-all duration-1500 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
@@ -48,4 +61,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
