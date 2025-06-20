@@ -5,25 +5,25 @@ import { Link } from "react-router-dom";
 const Projects = () => {
   const projects = [
     {
-      title: "Diabetic Retinopathy Classification",
-      description: "Developed a deep learning model using ResNet50 and SVM to detect diabetic retinopathy severity with advanced image preprocessing techniques.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-      tags: ["Deep Learning", "TensorFlow", "OpenCV", "Scikit-Learn"],
+      title: "WiseChoice - E-commerce Analytics Platform",
+      description: "Scalable analytics platform with Flask, React.js, and ML models (RoBERTa, Voting Classifier) for sentiment analysis and real-time price tracking across major platforms. Features distributed system with Celery, Redis, and secure APIs.",
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80",
+      tags: ["Flask", "React.js", "ML", "RoBERTa", "Selenium", "Redis", "MySQL"],
       github: "#",
       demo: "#"
     },
     {
-      title: "3D MRI Brain Tumor Segmentation",
-      description: "Created a robust 3D brain tumor segmentation model using a custom U-Net architecture with multi-stage attention mechanisms, achieving a Dice Score of 0.85.",
+      title: "3D MRI Brain Tumor Segmentation", 
+      description: "Advanced 3D brain tumor segmentation using BraTS 2020 dataset with multi-level architecture for detecting edema, enhancing tumor, and non-enhancing tumor areas. Achieved Dice Score of 0.85 with memory-efficient preprocessing.",
       image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&q=80",
-      tags: ["Deep Learning", "TensorFlow", "Computer Vision", "Numpy"],
+      tags: ["Python", "Deep Learning", "Computer Vision", "TensorFlow", "NumPy"],
       github: "#"
     },
     {
       title: "Hybrid Vision Transformer for Malaria Classification",
-      description: "Combined Vision Transformer with Klomogrovo-Arnold Neural Networks and Mixture of Experts framework for robust malaria cell classification.",
+      description: "Innovative approach combining Vision Transformer with Kolmogorov-Arnold Neural Networks and Mixture of Experts framework for robust malaria parasite detection with custom training pipeline and soft attention gating.",
       image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=80",
-      tags: ["Deep Learning", "PyTorch", "Computer Vision", "Transformers"],
+      tags: ["Vision Transformer", "PyTorch", "Computer Vision", "MOE", "KAN"],
       github: "#",
       demo: "#"
     }
@@ -36,7 +36,7 @@ const Projects = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground">
-            Showcasing my work in AI, machine learning, and computer vision
+            Showcasing my work in AI/ML, computer vision, and full-stack development
           </p>
         </div>
         
@@ -57,7 +57,7 @@ const Projects = () => {
         
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
-            These are just a few examples of my work. Visit my GitHub to see more projects.
+            These are key projects demonstrating my AI/ML expertise. Visit my GitHub for more implementations.
           </p>
           <Link 
             to="/resume" 

@@ -18,7 +18,8 @@ const Hero = () => {
     }
   };
   
-  return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
+  return (
+    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       {/* Full-width banner image with left-to-right animation */}
       <div className="w-full overflow-hidden mb-16">
         <div className={`w-full transition-all duration-1500 ${isLoaded ? 'translate-x-0' : '-translate-x-full'}`}>
@@ -33,18 +34,20 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-10">
           <Avatar className={`w-48 h-48 border-4 border-primary/50 transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
-            <AvatarImage alt="Jitendra Aluri" src="/lovable-uploads/5b7502da-a465-4d09-8179-f3883bbb3e61.jpg" className="object-contain" />
-            <AvatarFallback>JA</AvatarFallback>
+            <AvatarImage alt="Jitendra Chowdary Aluri" src="/lovable-uploads/5b7502da-a465-4d09-8179-f3883bbb3e61.jpg" className="object-contain" />
+            <AvatarFallback>JCA</AvatarFallback>
           </Avatar>
           
           <div className={`max-w-3xl transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Hi, I'm <span className="gradient-text"> Jitendra Aluri</span>
+              Hi, I'm <span className="gradient-text">Jitendra Chowdary Aluri</span>
             </h1>
             <h2 className={`text-2xl md:text-4xl mb-6 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Data Scientist & Machine Learning Enthusiast
+              AI/ML Engineer & Computer Science Student
             </h2>
-            <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>I transform complex data into actionable insights using Python, machine learning, and statistical analysis. Currently pursuing my UnderGraduation in Data Science at Vignan University.</p>
+            <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              I specialize in Machine Learning, Deep Learning, and AI solutions with expertise in Python, TensorFlow, and Computer Vision. Currently pursuing B.Tech in Computer Science Engineering with focus on AI and ML at Vignan's Foundation For Science, Technology & Research.
+            </p>
             
             <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <Button 
@@ -75,7 +78,8 @@ const Hero = () => {
           <ArrowDown className="h-4 w-4" />
         </a>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default Hero;

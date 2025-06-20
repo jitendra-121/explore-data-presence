@@ -2,37 +2,40 @@
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Publications = () => {
   const publications = [
     {
-      title: "Deep Learning Approaches to Diabetic Retinopathy Classification",
-      journal: "Journal of Medical Imaging",
-      year: "2023",
-      authors: ["Jitendra Aluri", "Sarah Chen", "Robert Johnson"],
-      abstract: "This paper presents a novel deep learning approach for automatic classification of diabetic retinopathy severity using ensemble methods and advanced preprocessing techniques.",
+      title: "Design and Optimization of a Custom CNN for Tiny Image Classification",
+      journal: "Research Publication",
+      year: "2024",
+      authors: ["Jitendra Chowdary Aluri"],
+      abstract: "This research focuses on developing and optimizing custom Convolutional Neural Network architectures specifically designed for tiny image classification tasks, addressing computational efficiency and accuracy trade-offs.",
       link: "#",
-      tags: ["Deep Learning", "Medical Imaging", "Classification"]
+      tags: ["CNN", "Deep Learning", "Image Classification", "Optimization"],
+      status: "Published"
     },
     {
-      title: "Attention-based Segmentation of Brain Tumors in 3D MRI",
-      journal: "IEEE Transactions on Medical Imaging",
-      year: "2022",
-      authors: ["Mark Davis", "Jitendra Aluri", "Emma Wilson"],
-      abstract: "We propose a novel 3D CNN architecture incorporating multi-stage attention mechanisms for accurate brain tumor segmentation from volumetric MRI scans.",
+      title: "Guided Convolutional Variational Autoencoder for Learning Latent Representations in Low-Resolution Image Classification",
+      journal: "Academic Journal",
+      year: "2024",
+      authors: ["Jitendra Chowdary Aluri"],
+      abstract: "Novel approach using guided convolutional variational autoencoders to learn effective latent representations for improved classification performance on low-resolution images.",
       link: "#",
-      tags: ["3D CNN", "Medical Imaging", "Attention Mechanisms"]
+      tags: ["VAE", "Deep Learning", "Latent Representations", "Computer Vision"],
+      status: "Under Review"
     },
     {
-      title: "Hybrid Vision Transformer for Malaria Parasite Detection",
-      journal: "Nature Scientific Reports",
-      year: "2022", 
-      authors: ["Jitendra Aluri", "Lisa Wang", "Michael Taylor"],
-      abstract: "This research introduces a hybrid approach combining Vision Transformers with Klomogrovo-Arnold Networks for robust detection of malaria parasites in microscopic blood smear images.",
+      title: "Malaria Parasite Classification using a Mixture of Experts and Kolmogorov-Arnold Networks for Improved Diagnostic Accuracy",
+      journal: "Medical AI Journal",
+      year: "2024",
+      authors: ["Jitendra Chowdary Aluri"],
+      abstract: "Advanced machine learning approach combining Mixture of Experts framework with Kolmogorov-Arnold Networks for enhanced malaria parasite detection and classification accuracy.",
       link: "#",
-      tags: ["Vision Transformer", "Medical Imaging", "Parasite Detection"]
+      tags: ["Medical AI", "MOE", "KAN", "Diagnostic Systems"],
+      status: "Upcoming Publication"
     }
   ];
   
@@ -43,7 +46,7 @@ const Publications = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Research Publications</h2>
           <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground">
-            My contributions to academic research in AI and medical imaging
+            My contributions to research in AI, machine learning, and computer vision
           </p>
         </div>
         
@@ -51,7 +54,12 @@ const Publications = () => {
           {publications.map((pub, index) => (
             <Card key={index} className="overflow-hidden border border-border hover:shadow-lg transition-all animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardHeader>
-                <CardTitle className="text-xl">{pub.title}</CardTitle>
+                <div className="flex justify-between items-start gap-2">
+                  <CardTitle className="text-xl flex-1">{pub.title}</CardTitle>
+                  <Badge variant={pub.status === "Published" ? "default" : pub.status === "Under Review" ? "secondary" : "outline"} className="text-xs">
+                    {pub.status}
+                  </Badge>
+                </div>
                 <CardDescription>
                   <p className="font-medium text-primary">{pub.journal}, {pub.year}</p>
                   <p className="text-sm mt-1">{pub.authors.join(", ")}</p>
@@ -78,7 +86,7 @@ const Publications = () => {
                   )}
                 >
                   <FileText className="h-4 w-4 mr-2" />
-                  Read Paper
+                  {pub.status === "Published" ? "Read Paper" : "Preview"}
                 </a>
               </CardFooter>
             </Card>
@@ -87,7 +95,7 @@ const Publications = () => {
         
         <div className="text-center mt-12">
           <p className="text-muted-foreground">
-            For a complete list of publications, please view my academic profile or CV.
+            Focused on advancing AI/ML research with practical applications in computer vision and medical diagnostics.
           </p>
         </div>
       </div>

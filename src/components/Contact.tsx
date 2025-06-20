@@ -1,17 +1,18 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -30,13 +31,15 @@ const Contact = () => {
       setLoading(false);
     }, 1000);
   };
-  return <section id="contact" className="section-padding bg-gradient-to-b from-background to-accent/50">
+
+  return (
+    <section id="contact" className="section-padding bg-gradient-to-b from-background to-accent/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground">
-            Have a question or want to work together? Feel free to reach out!
+            Have a question or want to collaborate? Feel free to reach out!
           </p>
         </div>
         
@@ -47,11 +50,31 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="bg-accent p-3 rounded-full">
+                  <Phone className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium">Phone</p>
+                  <a href="tel:+919391057056" className="text-muted-foreground hover:text-primary">+91 9391057056</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="bg-accent p-3 rounded-full">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <a href="mailto:alex@example.com" className="text-muted-foreground hover:text-primary">jitendraaluri10@gmail.com</a>
+                  <a href="mailto:jitendraaluri10@gmail.com" className="text-muted-foreground hover:text-primary">jitendraaluri10@gmail.com</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="bg-accent p-3 rounded-full">
+                  <MapPin className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium">Location</p>
+                  <p className="text-muted-foreground">Guntur-522017, Andhra Pradesh</p>
                 </div>
               </div>
               
@@ -61,7 +84,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-medium">LinkedIn</p>
-                  <a href="https://linkedin.com/in/alexchen" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">www.linkedin.com/in/jitendra-aluri-677236304</a>
+                  <a href="https://www.linkedin.com/in/jitendra-aluri-677236304" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">linkedin.com/in/jitendra-aluri-677236304</a>
                 </div>
               </div>
               
@@ -71,14 +94,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-medium">GitHub</p>
-                  <a href="https://github.com/alexchen" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">github.com/alexchen</a>
+                  <a href="https://github.com/jitendraaluri" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">github.com/jitendraaluri</a>
                 </div>
               </div>
             </div>
             
             <div className="mt-8">
               <p className="text-muted-foreground">
-                Currently available for internships and freelance work. Feel free to reach out if you have any interesting projects or opportunities.
+                Currently available for internships, research collaborations, and freelance AI/ML projects. Interested in opportunities in computer vision, deep learning, and innovative AI applications.
               </p>
             </div>
           </div>
@@ -109,6 +132,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Contact;
