@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Publications from "@/components/Publications";
+import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Github, Linkedin, Mail } from "lucide-react";
@@ -20,6 +21,7 @@ const Index = () => {
         <Skills />
         <Projects />
         <Publications />
+        <Certifications />
         <Contact />
       </main>
       

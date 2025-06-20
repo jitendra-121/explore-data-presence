@@ -52,6 +52,7 @@ const Navbar = () => {
           <a href="#about" className="text-sm hover:text-primary transition-colors">About</a>
           <a href="#projects" className="text-sm hover:text-primary transition-colors">Projects</a>
           <a href="#publications" className="text-sm hover:text-primary transition-colors">Publications</a>
+          <a href="#certifications" className="text-sm hover:text-primary transition-colors">Certifications</a>
           <a href="#skills" className="text-sm hover:text-primary transition-colors">Skills</a>
           <a href="#contact" className="text-sm hover:text-primary transition-colors">Contact</a>
           <Link to="/resume" className="text-sm hover:text-primary transition-colors flex items-center">
@@ -79,6 +80,7 @@ const Navbar = () => {
             <a href="#about" className="text-lg hover:text-primary" onClick={toggleMenu}>About</a>
             <a href="#projects" className="text-lg hover:text-primary" onClick={toggleMenu}>Projects</a>
             <a href="#publications" className="text-lg hover:text-primary" onClick={toggleMenu}>Publications</a>
+            <a href="#certifications" className="text-lg hover:text-primary" onClick={toggleMenu}>Certifications</a>
             <a href="#skills" className="text-lg hover:text-primary" onClick={toggleMenu}>Skills</a>
             <a href="#contact" className="text-lg hover:text-primary" onClick={toggleMenu}>Contact</a>
             <Link to="/resume" className="text-lg hover:text-primary flex items-center" onClick={toggleMenu}>
