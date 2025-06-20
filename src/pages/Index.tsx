@@ -29,7 +29,7 @@ const Index = () => {
       
       {/* Fixed social links */}
       <div className="fixed left-6 bottom-0 hidden md:flex flex-col items-center gap-6 after:content-[''] after:w-[1px] after:h-24 after:bg-border">
-        <a href="https://github.com/jitendraaluri" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-primary transition-colors">
+        <a href="https://github.com/jitendra-121" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-primary transition-colors">
           <Github className="h-5 w-5" />
           <span className="sr-only">GitHub</span>
         </a>

@@ -94,7 +94,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-medium">GitHub</p>
-                  <a href="https://github.com/jitendraaluri" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">github.com/jitendraaluri</a>
+                  <a href="https://github.com/jitendra-121" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">github.com/jitendra-121</a>
                 </div>
               </div>
             </div>

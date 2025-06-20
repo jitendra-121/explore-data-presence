@@ -1,3 +1,4 @@
+
 import { Code, Github, Linkedin, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -41,13 +42,15 @@ const Footer = () => {
           
           <div className="flex gap-4 mt-4 md:mt-0">
             {[
-              { icon: <Github className="h-5 w-5" />, label: "GitHub", delay: 400 },
-              { icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn", delay: 500 },
-              { icon: <Mail className="h-5 w-5" />, label: "Email", delay: 600 }
+              { icon: <Github className="h-5 w-5" />, label: "GitHub", href: "https://github.com/jitendra-121", delay: 400 },
+              { icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn", href: "https://www.linkedin.com/in/jitendra-aluri-677236304", delay: 500 },
+              { icon: <Mail className="h-5 w-5" />, label: "Email", href: "mailto:jitendraaluri10@gmail.com", delay: 600 }
             ].map((item, index) => (
               <a 
                 key={index} 
-                href="#" 
+                href={item.href} 
+                target={item.href.startsWith('http') ? '_blank' : undefined}
+                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className={`hover:text-primary transition-all duration-300 hover:scale-110 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDuration: '700ms', transitionDelay: `${item.delay}ms` }}
               >
