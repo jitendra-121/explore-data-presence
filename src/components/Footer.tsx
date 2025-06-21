@@ -1,4 +1,3 @@
-
 import { Code, Github, Linkedin, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -33,7 +32,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className={`flex items-center gap-2 mb-4 md:mb-0 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Code className="h-5 w-5 text-primary animate-float" />
-            <span className="font-bold">DataPortfolio</span>
+            <span className="font-bold">Jitendra's Data Portfolio</span>
           </div>
           
           <div className={`text-sm text-muted-foreground transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
