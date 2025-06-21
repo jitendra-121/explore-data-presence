@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Code, Menu, X, Download, FileText } from "lucide-react";
+import { Code, Menu, X, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -25,20 +25,6 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleResumeClick = () => {
-    // The URL should point to where your resume is stored
-    // For now, we'll use a placeholder URL
-    const resumeUrl = "/resume.pdf";
-    
-    // Create an anchor element
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = "Jitendra_Aluri_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
@@ -58,13 +44,6 @@ const Navbar = () => {
           <Link to="/resume" className="text-sm hover:text-primary transition-colors flex items-center">
             <FileText className="h-4 w-4 mr-1" /> CV
           </Link>
-          <Button 
-            size="sm" 
-            className="bg-gradient-to-r from-primary to-secondary hover:opacity-90"
-            onClick={handleResumeClick}
-          >
-            <Download className="h-4 w-4 mr-1" /> Resume
-          </Button>
         </div>
         
         <button className="md:hidden" onClick={toggleMenu}>
@@ -86,12 +65,6 @@ const Navbar = () => {
             <Link to="/resume" className="text-lg hover:text-primary flex items-center" onClick={toggleMenu}>
               <FileText className="h-4 w-4 mr-1" /> CV
             </Link>
-            <Button 
-              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 w-full"
-              onClick={handleResumeClick}
-            >
-              <Download className="h-4 w-4 mr-1" /> Resume
-            </Button>
           </div>
         </div>
       )}

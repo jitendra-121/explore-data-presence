@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Download, Mail, Phone, MapPin } from "lucide-react";
@@ -28,13 +27,23 @@ const Resume = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Portfolio
           </Link>
-          <Button 
-            onClick={handleDownloadResume}
-            className="bg-gradient-to-r from-primary to-secondary hover:opacity-90"
-          >
-            <Download className="h-4 w-4 mr-2" />
-            Download PDF
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              onClick={handleDownloadResume}
+              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Download PDF
+            </Button>
+            <Button 
+              onClick={handleDownloadResume}
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Resume
+            </Button>
+          </div>
         </div>
         
         <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
