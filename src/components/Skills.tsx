@@ -1,45 +1,67 @@
 
-import { Progress } from "@/components/ui/progress";
 import { useState, useEffect } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { Code, Database, Cloud, Settings } from "lucide-react";
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [progress, setProgress] = useState<Record<string, number>>({});
 
   const programmingLanguages = [
-    { name: "Python", level: 95 },
-    { name: "Java", level: 80 },
-    { name: "C++", level: 75 },
-    { name: "HTML/CSS", level: 85 },
-    { name: "JavaScript", level: 80 },
+    { name: "Python", icon: "🐍" },
+    { name: "Java", icon: "☕" },
+    { name: "C Programming", icon: "⚡" },
   ];
 
-  const frameworks = [
-    { name: "TensorFlow", level: 90 },
-    { name: "PyTorch", level: 85 },
-    { name: "Scikit-Learn", level: 90 },
-    { name: "OpenCV", level: 85 },
-    { name: "Flask", level: 80 },
-    { name: "FastAPI", level: 75 },
-    { name: "Streamlit", level: 80 },
+  const aiMlTechnologies = [
+    { name: "PyTorch", icon: "🔥" },
+    { name: "TensorFlow", icon: "🧠" },
+    { name: "Keras", icon: "⚙️" },
+    { name: "Scikit-learn", icon: "📊" },
+    { name: "OpenCV", icon: "👁️" },
+    { name: "NLTK", icon: "📝" },
+    { name: "SpaCy", icon: "🔤" },
+    { name: "NumPy", icon: "🔢" },
+    { name: "Pandas", icon: "🐼" },
+    { name: "Matplotlib", icon: "📈" },
   ];
 
-  const aiMlSkills = [
-    { name: "Machine Learning", level: 95 },
-    { name: "Deep Learning", level: 90 },
-    { name: "Computer Vision", level: 90 },
-    { name: "Natural Language Processing", level: 85 },
-    { name: "Prompt Engineering", level: 80 },
-    { name: "LLMs", level: 75 },
-    { name: "RAG", level: 70 },
+  const webTechnologies = [
+    { name: "HTML", icon: "🌐" },
+    { name: "CSS", icon: "🎨" },
+    { name: "JavaScript", icon: "📜" },
+    { name: "Spring Boot", icon: "🍃" },
+    { name: "Flask", icon: "🌶️" },
+    { name: "MySQL", icon: "🗄️" },
+    { name: "REST APIs", icon: "🔗" },
+    { name: "Git", icon: "📚" },
+    { name: "Jira", icon: "📋" },
   ];
 
-  const tools = [
-    "Git", "GitHub", "VS Code", "Azure Cloud", "Pydantic", "MySQL", 
-    "Docker", "MLflow", "DVC", "Pandas", "NumPy", "Matplotlib", 
-    "Seaborn", "Jupyter", "NLTK", "spaCy", "Hugging Face", "LangChain"
+  const cloudDeployment = [
+    { name: "Azure DevOps", icon: "☁️" },
+    { name: "AWS Services", icon: "🚀" },
+    { name: "Azure ML Studio", icon: "🤖" },
+    { name: "MLflow", icon: "📊" },
+    { name: "Docker", icon: "🐳" },
+    { name: "Jenkins", icon: "⚙️" },
+    { name: "Kubernetes", icon: "⚓" },
+  ];
+
+  const developerTools = [
+    { name: "VS Code", icon: "💻" },
+    { name: "Anaconda", icon: "🐍" },
+    { name: "Jupyter Notebook", icon: "📓" },
+    { name: "Eclipse", icon: "🌙" },
+    { name: "MS Office", icon: "📊" },
+    { name: "Tableau", icon: "📈" },
+  ];
+
+  const specializations = [
+    "PyTorch, TensorFlow, Keras, Scikit-learn, OpenCV, NLTK, SpaCy, NumPy, Pandas, Matplotlib",
+    "Deep Learning (Neural Networks, Transformers, LLMs - Huggingface), Computer Vision, Natural Language Processing (NLP)",
+    "HTML, CSS, Java Script, Spring Boot, Microservices, REST APIs, MySQL, Oracle Database, Git, Bitbucket, Agile, Jira, SDLC",
+    "Azure DevOps, AWS Services, Azure ML Studio, MLflow, CI/CD, Docker, Jenkins, Kubernetes",
+    "VS Code, Anaconda, Jupyter Notebook, Eclipse, MS Office, Tableau"
   ];
 
   useEffect(() => {
@@ -47,15 +69,6 @@ const Skills = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Animate progress bars when section becomes visible
-          [...programmingLanguages, ...frameworks, ...aiMlSkills].forEach(skill => {
-            setTimeout(() => {
-              setProgress(prev => ({
-                ...prev,
-                [skill.name]: skill.level
-              }));
-            }, 300);
-          });
         }
       },
       { threshold: 0.1 }
@@ -69,81 +82,118 @@ const Skills = () => {
     };
   }, []);
 
-  const SkillCategory = ({ title, skills, delay = 0 }: { title: string; skills: typeof programmingLanguages; delay?: number }) => (
-    <Card className={`p-6 tech-card border-0 shadow-xl transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${delay}ms` }}>
-      <h3 className="text-xl font-bold mb-6 gradient-text">{title}</h3>
-      <div className="space-y-6">
-        {skills.map((skill, index) => (
-          <div key={index} className="space-y-2">
-            <div className="flex justify-between">
-              <span className="font-medium">{skill.name}</span>
-              <span className="text-muted-foreground">{progress[skill.name] || 0}%</span>
+  const SkillCategory = ({ 
+    title, 
+    skills, 
+    description, 
+    icon, 
+    delay = 0 
+  }: { 
+    title: string; 
+    skills: typeof programmingLanguages; 
+    description: string;
+    icon: React.ReactNode;
+    delay?: number; 
+  }) => (
+    <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${delay}ms` }}>
+      <div className="mb-6">
+        <div className="flex items-center gap-3 mb-4">
+          {icon}
+          <h3 className="text-xl font-bold text-gray-700 uppercase tracking-wide">{title}</h3>
+        </div>
+        
+        <div className="flex flex-wrap gap-4 mb-4">
+          {skills.map((skill, index) => (
+            <div key={index} className="flex flex-col items-center p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="text-2xl mb-1">{skill.icon}</div>
+              <span className="text-sm text-gray-600 text-center">{skill.name}</span>
             </div>
-            <Progress 
-              value={progress[skill.name] || 0} 
-              className="h-3 transition-all duration-300" 
-              indicatorClassName="gradient-bg" 
-            />
-          </div>
-        ))}
+          ))}
+        </div>
+        
+        <div className="flex items-start gap-2">
+          <div className="text-green-500 mt-1">✓</div>
+          <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+        </div>
       </div>
-    </Card>
+    </div>
   );
 
   return (
-    <section id="skills" className="section-padding bg-gradient-to-br from-background to-accent/30">
+    <section id="skills" className="section-padding bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className={`max-w-3xl mx-auto mb-12 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Expertise</h2>
-          <div className="h-1 w-20 gradient-bg mx-auto mb-6 rounded-full transition-all duration-500 delay-300"></div>
-          <p className="text-lg text-muted-foreground">
-            My technical skills and expertise in AI/ML and software development
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <SkillCategory title="Programming Languages" skills={programmingLanguages} delay={200} />
-          <SkillCategory title="AI/ML & Frameworks" skills={frameworks} delay={400} />
-          <SkillCategory title="AI/ML Specializations" skills={aiMlSkills} delay={600} />
-        </div>
-
-        <div className={`mt-16 transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl font-bold mb-6 text-center gradient-text">Tools & Technologies</h3>
-          <div className="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
-            {tools.map((tool, index) => (
-              <Badge 
-                key={index} 
-                variant="secondary"
-                className={`px-4 py-2 text-sm border border-primary/20 bg-gradient-to-r from-primary/10 to-secondary/10 hover:from-primary/20 hover:to-secondary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-                style={{ transitionDelay: `${index * 50}ms` }}
-              >
-                {tool}
-              </Badge>
-            ))}
-          </div>
-        </div>
-
-        <Card className={`mt-16 p-8 tech-card border-0 shadow-xl transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl font-bold mb-6 text-center gradient-text">Core Computer Science</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold mb-3 text-primary">Data Structures & Algorithms</h4>
-              <p className="text-muted-foreground text-sm">Strong foundation in algorithmic thinking and optimization</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3 text-primary">Computer Networks</h4>
-              <p className="text-muted-foreground text-sm">Understanding of network protocols and distributed systems</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3 text-primary">Database Management</h4>
-              <p className="text-muted-foreground text-sm">Experience with MySQL and database design principles</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3 text-primary">Operating Systems</h4>
-              <p className="text-muted-foreground text-sm">Knowledge of system architecture and process management</p>
+        <div className={`max-w-5xl mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex items-center gap-4 mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 uppercase tracking-wide">Skills</h2>
+            <div className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              75%
             </div>
           </div>
-        </Card>
+          
+          <div className="space-y-12">
+            <SkillCategory 
+              title="Programming Languages" 
+              skills={programmingLanguages} 
+              description="Python, Java, C Programming"
+              icon={<Code className="h-6 w-6 text-blue-600" />}
+              delay={200} 
+            />
+            
+            <SkillCategory 
+              title="AI & Machine Learning" 
+              skills={aiMlTechnologies} 
+              description={specializations[0]}
+              icon={<span className="text-2xl">🤖</span>}
+              delay={400} 
+            />
+            
+            <SkillCategory 
+              title="Web Technologies" 
+              skills={webTechnologies} 
+              description={specializations[2]}
+              icon={<span className="text-2xl">🌐</span>}
+              delay={600} 
+            />
+            
+            <SkillCategory 
+              title="Cloud & Deployment" 
+              skills={cloudDeployment} 
+              description={specializations[3]}
+              icon={<Cloud className="h-6 w-6 text-green-600" />}
+              delay={800} 
+            />
+            
+            <SkillCategory 
+              title="Developer Tools" 
+              skills={developerTools} 
+              description={specializations[4]}
+              icon={<Settings className="h-6 w-6 text-gray-600" />}
+              delay={1000} 
+            />
+          </div>
+
+          <Card className={`mt-16 p-8 bg-white border border-gray-200 shadow-lg transition-all duration-700 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h3 className="text-xl font-bold mb-6 text-center text-gray-800">Core Specializations</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Machine Learning & AI</h4>
+                <p className="text-gray-600 text-sm">Deep Learning, Computer Vision, Natural Language Processing, Neural Networks</p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Data Science & Analytics</h4>
+                <p className="text-gray-600 text-sm">Data Analysis, Statistical Modeling, Data Visualization, Predictive Analytics</p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Software Development</h4>
+                <p className="text-gray-600 text-sm">Full-stack Development, API Design, Database Management, Version Control</p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-blue-600">Cloud & DevOps</h4>
+                <p className="text-gray-600 text-sm">Cloud Computing, Containerization, CI/CD Pipelines, Infrastructure Management</p>
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </section>
   );
