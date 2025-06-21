@@ -1,13 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Code, Menu, X, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -16,21 +13,17 @@ const Navbar = () => {
         setIsScrolled(false);
       }
     };
-    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
+  return <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 font-bold text-lg">
           <Code className="h-6 w-6 text-primary" />
-          <span>DataPortfolio</span>
+          <span>Jitendra's DataPortfolio</span>
         </a>
         
         <div className="hidden md:flex items-center gap-6">
@@ -52,8 +45,7 @@ const Navbar = () => {
       </div>
       
       {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-20 md:hidden">
+      {isMenuOpen && <div className="fixed inset-0 bg-white z-40 pt-20 md:hidden">
           <div className="flex flex-col items-center gap-6 p-4">
             <a href="#home" className="text-lg hover:text-primary" onClick={toggleMenu}>Home</a>
             <a href="#about" className="text-lg hover:text-primary" onClick={toggleMenu}>About</a>
@@ -66,10 +58,7 @@ const Navbar = () => {
               <FileText className="h-4 w-4 mr-1" /> CV
             </Link>
           </div>
-        </div>
-      )}
-    </nav>
-  );
+        </div>}
+    </nav>;
 };
-
 export default Navbar;
