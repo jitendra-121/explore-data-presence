@@ -1,59 +1,59 @@
 
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Code, Database, Cloud, Settings } from "lucide-react";
+import { Code, Database, Cloud, Settings, Brain, Globe, Terminal, Cpu } from "lucide-react";
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const programmingLanguages = [
-    { name: "Python", icon: "🐍" },
-    { name: "Java", icon: "☕" },
-    { name: "C Programming", icon: "⚡" },
+    { name: "Python", icon: <Code className="h-6 w-6 text-blue-500" /> },
+    { name: "Java", icon: <Cpu className="h-6 w-6 text-orange-500" /> },
+    { name: "C Programming", icon: <Terminal className="h-6 w-6 text-gray-600" /> },
   ];
 
   const aiMlTechnologies = [
-    { name: "PyTorch", icon: "🔥" },
-    { name: "TensorFlow", icon: "🧠" },
-    { name: "Keras", icon: "⚙️" },
-    { name: "Scikit-learn", icon: "📊" },
-    { name: "OpenCV", icon: "👁️" },
-    { name: "NLTK", icon: "📝" },
-    { name: "SpaCy", icon: "🔤" },
-    { name: "NumPy", icon: "🔢" },
-    { name: "Pandas", icon: "🐼" },
-    { name: "Matplotlib", icon: "📈" },
+    { name: "PyTorch", icon: <Brain className="h-6 w-6 text-red-500" /> },
+    { name: "TensorFlow", icon: <Brain className="h-6 w-6 text-orange-500" /> },
+    { name: "Keras", icon: <Settings className="h-6 w-6 text-red-600" /> },
+    { name: "Scikit-learn", icon: <Database className="h-6 w-6 text-blue-600" /> },
+    { name: "OpenCV", icon: <Globe className="h-6 w-6 text-green-600" /> },
+    { name: "NLTK", icon: <Code className="h-6 w-6 text-purple-500" /> },
+    { name: "SpaCy", icon: <Code className="h-6 w-6 text-blue-500" /> },
+    { name: "NumPy", icon: <Database className="h-6 w-6 text-blue-700" /> },
+    { name: "Pandas", icon: <Database className="h-6 w-6 text-green-500" /> },
+    { name: "Matplotlib", icon: <Settings className="h-6 w-6 text-orange-600" /> },
   ];
 
   const webTechnologies = [
-    { name: "HTML", icon: "🌐" },
-    { name: "CSS", icon: "🎨" },
-    { name: "JavaScript", icon: "📜" },
-    { name: "Spring Boot", icon: "🍃" },
-    { name: "Flask", icon: "🌶️" },
-    { name: "MySQL", icon: "🗄️" },
-    { name: "REST APIs", icon: "🔗" },
-    { name: "Git", icon: "📚" },
-    { name: "Jira", icon: "📋" },
+    { name: "HTML", icon: <Globe className="h-6 w-6 text-orange-500" /> },
+    { name: "CSS", icon: <Globe className="h-6 w-6 text-blue-500" /> },
+    { name: "JavaScript", icon: <Code className="h-6 w-6 text-yellow-500" /> },
+    { name: "Spring Boot", icon: <Settings className="h-6 w-6 text-green-600" /> },
+    { name: "Flask", icon: <Code className="h-6 w-6 text-gray-600" /> },
+    { name: "MySQL", icon: <Database className="h-6 w-6 text-blue-600" /> },
+    { name: "REST APIs", icon: <Globe className="h-6 w-6 text-purple-500" /> },
+    { name: "Git", icon: <Code className="h-6 w-6 text-orange-600" /> },
+    { name: "Jira", icon: <Settings className="h-6 w-6 text-blue-700" /> },
   ];
 
   const cloudDeployment = [
-    { name: "Azure DevOps", icon: "☁️" },
-    { name: "AWS Services", icon: "🚀" },
-    { name: "Azure ML Studio", icon: "🤖" },
-    { name: "MLflow", icon: "📊" },
-    { name: "Docker", icon: "🐳" },
-    { name: "Jenkins", icon: "⚙️" },
-    { name: "Kubernetes", icon: "⚓" },
+    { name: "Azure DevOps", icon: <Cloud className="h-6 w-6 text-blue-500" /> },
+    { name: "AWS Services", icon: <Cloud className="h-6 w-6 text-orange-500" /> },
+    { name: "Azure ML Studio", icon: <Brain className="h-6 w-6 text-blue-600" /> },
+    { name: "MLflow", icon: <Settings className="h-6 w-6 text-green-500" /> },
+    { name: "Docker", icon: <Database className="h-6 w-6 text-blue-700" /> },
+    { name: "Jenkins", icon: <Settings className="h-6 w-6 text-red-500" /> },
+    { name: "Kubernetes", icon: <Cloud className="h-6 w-6 text-blue-600" /> },
   ];
 
   const developerTools = [
-    { name: "VS Code", icon: "💻" },
-    { name: "Anaconda", icon: "🐍" },
-    { name: "Jupyter Notebook", icon: "📓" },
-    { name: "Eclipse", icon: "🌙" },
-    { name: "MS Office", icon: "📊" },
-    { name: "Tableau", icon: "📈" },
+    { name: "VS Code", icon: <Code className="h-6 w-6 text-blue-500" /> },
+    { name: "Anaconda", icon: <Terminal className="h-6 w-6 text-green-500" /> },
+    { name: "Jupyter Notebook", icon: <Code className="h-6 w-6 text-orange-500" /> },
+    { name: "Eclipse", icon: <Code className="h-6 w-6 text-purple-600" /> },
+    { name: "MS Office", icon: <Settings className="h-6 w-6 text-blue-600" /> },
+    { name: "Tableau", icon: <Database className="h-6 w-6 text-orange-600" /> },
   ];
 
   const specializations = [
@@ -105,7 +105,7 @@ const Skills = () => {
         <div className="flex flex-wrap gap-4 mb-4">
           {skills.map((skill, index) => (
             <div key={index} className="flex flex-col items-center p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="text-2xl mb-1">{skill.icon}</div>
+              <div className="mb-1">{skill.icon}</div>
               <span className="text-sm text-gray-600 text-center">{skill.name}</span>
             </div>
           ))}
@@ -143,7 +143,7 @@ const Skills = () => {
               title="AI & Machine Learning" 
               skills={aiMlTechnologies} 
               description={specializations[0]}
-              icon={<span className="text-2xl">🤖</span>}
+              icon={<Brain className="h-6 w-6 text-purple-600" />}
               delay={400} 
             />
             
@@ -151,7 +151,7 @@ const Skills = () => {
               title="Web Technologies" 
               skills={webTechnologies} 
               description={specializations[2]}
-              icon={<span className="text-2xl">🌐</span>}
+              icon={<Globe className="h-6 w-6 text-green-600" />}
               delay={600} 
             />
             
@@ -159,7 +159,7 @@ const Skills = () => {
               title="Cloud & Deployment" 
               skills={cloudDeployment} 
               description={specializations[3]}
-              icon={<Cloud className="h-6 w-6 text-green-600" />}
+              icon={<Cloud className="h-6 w-6 text-blue-600" />}
               delay={800} 
             />
             
