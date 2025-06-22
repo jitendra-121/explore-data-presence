@@ -2,10 +2,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Publications from "@/components/Publications";
 import Certifications from "@/components/Certifications";
+import Interests from "@/components/Interests";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Github, Linkedin, Mail } from "lucide-react";
@@ -18,10 +21,13 @@ const Index = () => {
       <main>
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
         <Publications />
         <Certifications />
+        <Interests />
+        <Testimonials />
         <Contact />
       </main>
       
