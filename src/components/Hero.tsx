@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -19,14 +18,14 @@ const Hero = () => {
   };
   
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
+    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-8">
       {/* Full-width banner image with left-to-right animation */}
-      <div className="w-full overflow-hidden mb-8">
+      <div className="w-full overflow-hidden mb-4">
         <div className={`w-full transition-all duration-1500 ${isLoaded ? 'translate-x-0' : '-translate-x-full'}`}>
           <img 
             src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" 
             alt="Crafting AI-Driven Solutions for a Better World" 
-            className="w-full h-48 md:h-64 object-cover shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow"
+            className="w-full h-40 md:h-56 object-cover shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow"
           />
         </div>
       </div>
