@@ -25,7 +25,7 @@ const Hero = () => {
           <img 
             src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" 
             alt="Crafting AI-Driven Solutions for a Better World" 
-            className="w-full h-40 md:h-56 object-cover shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow"
+            className="w-full h-40 md:h-56 object-cover object-top shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow"
           />
         </div>
       </div>
