@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Code, Database, Cloud, Settings, Brain, Globe, Terminal, Cpu } from "lucide-react";
 
 export const programmingLanguages = [{
