@@ -2,31 +2,24 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-  
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-  
-  return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-8">
+  return <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-8">
       {/* Full-width banner image with left-to-right animation */}
       <div className="w-full overflow-hidden mb-4">
         <div className={`w-full transition-all duration-1500 ${isLoaded ? 'translate-x-0' : '-translate-x-full'}`}>
-          <img 
-            src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" 
-            alt="Crafting AI-Driven Solutions for a Better World" 
-            className="w-full h-40 md:h-56 object-cover object-top shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow"
-          />
+          <img src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" alt="Crafting AI-Driven Solutions for a Better World" className="w-full h-40 md:h-56 object-cover object-top shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow" />
         </div>
       </div>
       
@@ -39,27 +32,16 @@ const Hero = () => {
           
           <div className={`max-w-3xl transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Hi, I'm <span className="gradient-text">Jitendra Aluri Chowdary</span>
+              Hi, I'm <span className="gradient-text">Jitendra Aluri </span>
             </h1>
-            <h2 className={`text-2xl md:text-4xl mb-6 text-primary/80 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              AI/ML Engineer & Computer Science Student
-            </h2>
-            <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              I specialize in Machine Learning, Deep Learning, and AI solutions with expertise in Python, TensorFlow, and Computer Vision. Currently pursuing B.Tech in Computer Science Engineering with focus on AI and ML at Vignan's Foundation For Science, Technology & Research.
-            </p>
+            <h2 className={`text-2xl md:text-4xl mb-6 text-primary/80 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>AI/ML Entusiast & Computer Science Student</h2>
+            <p className={`text-lg text-muted-foreground mb-8 max-w-2xl transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>I specialize in Machine Learning, Deep Learning, and AI solutions with expertise in Python, TensorFlow, and Computer Vision. Currently pursuing B.Tech in Computer Science Engineering with focus on Turning ideas into intelligent systems at Vignan's Foundation For Science, Technology & Research.</p>
             
             <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <Button 
-                className="gradient-bg text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                onClick={() => scrollToSection('projects')}
-              >
+              <Button className="gradient-bg text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('projects')}>
                 View Projects
               </Button>
-              <Button 
-                variant="outline" 
-                className="border-primary text-primary hover:bg-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                onClick={() => scrollToSection('contact')}
-              >
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('contact')}>
                 Contact Me
               </Button>
             </div>
@@ -77,8 +59,6 @@ const Hero = () => {
           <ArrowDown className="h-4 w-4" />
         </a>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
