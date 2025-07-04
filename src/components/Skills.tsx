@@ -7,7 +7,7 @@ const Skills = () => {
     name: "Python",
     icon: <Code className="h-6 w-6 text-blue-500" />
   }, {
-    name: "Java",
+    name: "Java", 
     icon: <Cpu className="h-6 w-6 text-orange-500" />
   }, {
     name: "C Programming",
@@ -54,7 +54,7 @@ const Skills = () => {
     name: "JavaScript",
     icon: <Code className="h-6 w-6 text-yellow-500" />
   }, {
-    name: "Spring Boot",
+    name: "FastAPI",
     icon: <Settings className="h-6 w-6 text-green-600" />
   }, {
     name: "Flask",
@@ -63,14 +63,8 @@ const Skills = () => {
     name: "MySQL",
     icon: <Database className="h-6 w-6 text-blue-600" />
   }, {
-    name: "REST APIs",
-    icon: <Globe className="h-6 w-6 text-purple-500" />
-  }, {
     name: "Git",
     icon: <Code className="h-6 w-6 text-orange-600" />
-  }, {
-    name: "Jira",
-    icon: <Settings className="h-6 w-6 text-blue-700" />
   }];
   const cloudDeployment = [{
     name: "Azure DevOps",
@@ -113,7 +107,7 @@ const Skills = () => {
     name: "Tableau",
     icon: <Database className="h-6 w-6 text-orange-600" />
   }];
-  const specializations = ["PyTorch, TensorFlow, Keras, Scikit-learn, OpenCV, NLTK, SpaCy, NumPy, Pandas, Matplotlib", "Deep Learning (Neural Networks, Transformers, LLMs - Huggingface), Computer Vision, Natural Language Processing (NLP)", "HTML, CSS, Java Script, Spring Boot, Microservices, REST APIs, MySQL, Oracle Database, Git, Bitbucket, Agile, Jira, SDLC", "Azure DevOps, AWS Services, Azure ML Studio, MLflow, CI/CD, Docker, Jenkins, Kubernetes", "VS Code, Anaconda, Jupyter Notebook, Eclipse, MS Office, Tableau"];
+  const specializations = ["PyTorch, TensorFlow, Keras, Scikit-learn, OpenCV, NLTK, SpaCy, NumPy, Pandas, Matplotlib", "Deep Learning (Neural Networks, Transformers, LLMs - Huggingface), Computer Vision, Natural Language Processing (NLP)", "HTML, CSS, Java Script, FastAPI, Microservices, MySQL, Oracle Database, Git, Bitbucket, Agile, SDLC", "Azure DevOps, AWS Services, Azure ML Studio, MLflow, CI/CD, Docker, Jenkins, Kubernetes", "VS Code, Anaconda, Jupyter Notebook, Eclipse, MS Office, Tableau"];
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
