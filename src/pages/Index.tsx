@@ -8,7 +8,6 @@ import Projects from "@/components/Projects";
 import Publications from "@/components/Publications";
 import Certifications from "@/components/Certifications";
 import Interests from "@/components/Interests";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Github, Linkedin, Mail } from "lucide-react";
@@ -27,7 +26,6 @@ const Index = () => {
         <Publications />
         <Certifications />
         <Interests />
-        <Testimonials />
         <Contact />
       </main>
       
