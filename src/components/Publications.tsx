@@ -13,7 +13,7 @@ const Publications = () => {
   const publications = [
     {
       title: "Design and Optimization of a Custom CNN for Tiny Image Classification",
-      journal: "Research Publication", 
+      journal: "Research Publication",
       year: "2024",
       authors: ["Jitendra Chowdary Aluri"],
       abstract: "This research focuses on developing and optimizing custom Convolutional Neural Network architectures specifically designed for tiny image classification tasks, addressing computational efficiency and accuracy trade-offs.",
@@ -24,7 +24,7 @@ const Publications = () => {
     {
       title: "Guided Convolutional Variational Autoencoder for Learning Latent Representations in Low-Resolution Image Classification",
       journal: "Academic Journal",
-      year: "2024", 
+      year: "2024",
       authors: ["Jitendra Chowdary Aluri"],
       abstract: "Novel approach using guided convolutional variational autoencoders to learn effective latent representations for improved classification performance on low-resolution images.",
       link: "#",
@@ -132,7 +132,7 @@ const Publications = () => {
               asChild
               className="px-8 py-2 mb-4"
             >
-              <Link to="/publications" target="_blank" rel="noopener noreferrer">
+              <Link to="/publications">
                 View All Publications
               </Link>
             </Button>
