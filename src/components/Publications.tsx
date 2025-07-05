@@ -1,11 +1,15 @@
 
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Publications = () => {
+  const [showAll, setShowAll] = useState(false);
+
   const publications = [
     {
       title: "Design and Optimization of a Custom CNN for Tiny Image Classification",
@@ -36,8 +40,30 @@ const Publications = () => {
       link: "#",
       tags: ["Medical AI", "MOE", "KAN", "Diagnostic Systems"],
       status: "Upcoming Publication"
+    },
+    {
+      title: "Federated Learning for Privacy-Preserving Medical Image Analysis",
+      journal: "IEEE Transactions on Medical Imaging",
+      year: "2024",
+      authors: ["Jitendra Chowdary Aluri", "Co-Author Name"],
+      abstract: "Comprehensive study on implementing federated learning frameworks for medical image analysis while maintaining patient privacy and data security across distributed healthcare networks.",
+      link: "#",
+      tags: ["Federated Learning", "Medical Imaging", "Privacy", "Healthcare AI"],
+      status: "Under Review"
+    },
+    {
+      title: "Transformer-based Attention Mechanisms for Multi-Modal Medical Diagnosis",
+      journal: "Nature Machine Intelligence",
+      year: "2023",
+      authors: ["Jitendra Chowdary Aluri"],
+      abstract: "Novel transformer architecture incorporating multi-modal attention mechanisms for improved diagnostic accuracy across various medical imaging modalities including X-ray, CT, and MRI scans.",
+      link: "#",
+      tags: ["Transformers", "Multi-Modal", "Medical Diagnosis", "Attention Mechanisms"],
+      status: "Published"
     }
   ];
+
+  const displayedPublications = showAll ? publications : publications.slice(0, 3);
   
   return (
     <section id="publications" className="section-padding bg-muted/30">
@@ -51,7 +77,7 @@ const Publications = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {publications.map((pub, index) => (
+          {displayedPublications.map((pub, index) => (
             <Card key={index} className="overflow-hidden border border-border hover:shadow-lg transition-all animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardHeader>
                 <div className="flex justify-between items-start gap-2">
@@ -93,7 +119,19 @@ const Publications = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        {publications.length > 3 && (
+          <div className="text-center mt-12">
+            <Button 
+              onClick={() => setShowAll(!showAll)}
+              variant="outline"
+              className="px-8 py-2 mb-4"
+            >
+              {showAll ? "Show Less" : `View More Publications (${publications.length - 3} more)`}
+            </Button>
+          </div>
+        )}
+        
+        <div className="text-center">
           <p className="text-muted-foreground">
             Focused on advancing AI/ML research with practical applications in computer vision and medical diagnostics.
           </p>

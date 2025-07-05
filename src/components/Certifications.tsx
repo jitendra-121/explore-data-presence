@@ -1,9 +1,13 @@
 
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Award, Calendar, ExternalLink } from "lucide-react";
 
 const Certifications = () => {
+  const [showAll, setShowAll] = useState(false);
+
   const certifications = [
     {
       title: "Learning Analytical Tools",
@@ -25,8 +29,24 @@ const Certifications = () => {
       date: "2024",
       skills: ["Cloud Computing", "Azure Services", "Cloud Architecture"],
       credentialUrl: "#"
+    },
+    {
+      title: "Advanced Machine Learning Specialization",
+      issuer: "Stanford Online",
+      date: "2023",
+      skills: ["Deep Learning", "Neural Networks", "TensorFlow"],
+      credentialUrl: "#"
+    },
+    {
+      title: "AWS Certified Solutions Architect",
+      issuer: "Amazon Web Services",
+      date: "2023",
+      skills: ["AWS", "Cloud Architecture", "Serverless"],
+      credentialUrl: "#"
     }
   ];
+
+  const displayedCertifications = showAll ? certifications : certifications.slice(0, 3);
 
   return (
     <section id="certifications" className="section-padding bg-background">
@@ -40,7 +60,7 @@ const Certifications = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {certifications.map((cert, index) => (
+          {displayedCertifications.map((cert, index) => (
             <Card 
               key={index} 
               className="hover:shadow-lg transition-shadow duration-300 animate-slide-up"
@@ -85,6 +105,18 @@ const Certifications = () => {
             </Card>
           ))}
         </div>
+
+        {certifications.length > 3 && (
+          <div className="text-center mt-12">
+            <Button 
+              onClick={() => setShowAll(!showAll)}
+              variant="outline"
+              className="px-8 py-2"
+            >
+              {showAll ? "Show Less" : `View More (${certifications.length - 3} more)`}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

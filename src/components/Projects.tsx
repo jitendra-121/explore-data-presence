@@ -1,8 +1,12 @@
 
+import { useState } from "react";
 import ProjectCard from "./ProjectCard";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+
   const projects = [
     {
       title: "WiseChoice - E-commerce Analytics Platform",
@@ -26,8 +30,33 @@ const Projects = () => {
       tags: ["Vision Transformer", "PyTorch", "Computer Vision", "MOE", "KAN"],
       github: "#",
       demo: "#"
+    },
+    {
+      title: "AI-Powered Financial Forecasting System",
+      description: "Machine learning system for predicting stock market trends using LSTM networks and technical indicators. Implements portfolio optimization algorithms with risk assessment and backtesting capabilities.",
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
+      tags: ["LSTM", "Financial ML", "Portfolio Optimization", "Risk Analysis"],
+      github: "#",
+      demo: "#"
+    },
+    {
+      title: "Real-time Object Detection and Tracking",
+      description: "High-performance computer vision system using YOLO and DeepSORT algorithms for multi-object tracking in video streams. Optimized for edge deployment with TensorRT acceleration.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      tags: ["YOLO", "DeepSORT", "Computer Vision", "TensorRT", "Edge AI"],
+      github: "#"
+    },
+    {
+      title: "Natural Language Processing Chatbot",
+      description: "Conversational AI system built with transformer models and fine-tuned on domain-specific data. Features context awareness, sentiment analysis, and multi-language support.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+      tags: ["Transformers", "NLP", "Chatbot", "BERT", "Multi-language"],
+      github: "#",
+      demo: "#"
     }
   ];
+
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <section id="projects" className="section-padding bg-accent/50">
@@ -41,7 +70,7 @@ const Projects = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <ProjectCard 
               key={index}
               title={project.title}
@@ -55,7 +84,19 @@ const Projects = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        {projects.length > 3 && (
+          <div className="text-center mt-12">
+            <Button 
+              onClick={() => setShowAll(!showAll)}
+              variant="outline"
+              className="px-8 py-2 mb-4"
+            >
+              {showAll ? "Show Less" : `View More Projects (${projects.length - 3} more)`}
+            </Button>
+          </div>
+        )}
+        
+        <div className="text-center">
           <p className="text-muted-foreground mb-4">
             These are key projects demonstrating my AI/ML expertise. Visit my GitHub for more implementations.
           </p>
