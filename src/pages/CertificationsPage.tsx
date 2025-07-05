@@ -1,13 +1,11 @@
-import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Award, Calendar, ExternalLink } from "lucide-react";
+import { Award, Calendar, ExternalLink, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Certifications = () => {
-  const [showAll, setShowAll] = useState(false);
-
+const CertificationsPage = () => {
   const certifications = [
     {
       title: "Learning Analytical Tools",
@@ -46,25 +44,28 @@ const Certifications = () => {
     }
   ];
 
-  const displayedCertifications = showAll ? certifications : certifications.slice(0, 3);
-
   return (
-    <section id="certifications" className="section-padding bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Certifications</h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 md:px-6 py-12">
+        <div className="mb-8">
+          <Link to="/">
+            <Button variant="outline" className="mb-6">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Home
+            </Button>
+          </Link>
+          <h1 className="text-4xl font-bold mb-4">All Certifications</h1>
+          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mb-6"></div>
           <p className="text-lg text-muted-foreground">
-            Professional certifications that validate my expertise in AI, data analytics, and cloud technologies
+            Complete list of my professional certifications validating expertise in AI, data analytics, and cloud technologies
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {displayedCertifications.map((cert, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certifications.map((cert, index) => (
             <Card 
               key={index} 
-              className="hover:shadow-lg transition-shadow duration-300 animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="hover:shadow-lg transition-shadow duration-300"
             >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
@@ -105,29 +106,9 @@ const Certifications = () => {
             </Card>
           ))}
         </div>
-
-        {certifications.length > 3 && (
-          <div className="text-center mt-12">
-            <Button 
-              onClick={() => setShowAll(!showAll)}
-              variant="outline"
-              className="px-8 py-2 mr-4"
-            >
-              {showAll ? "Show Less" : `View More (${certifications.length - 3} more)`}
-            </Button>
-            <Button 
-              asChild
-              className="px-8 py-2"
-            >
-              <Link to="/certifications">
-                View All Certifications
-              </Link>
-            </Button>
-          </div>
-        )}
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Certifications;
+export default CertificationsPage;

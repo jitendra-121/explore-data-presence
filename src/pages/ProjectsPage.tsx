@@ -1,12 +1,10 @@
 
-import { useState } from "react";
-import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import ProjectCard from "@/components/ProjectCard";
 
-const Projects = () => {
-  const [showAll, setShowAll] = useState(false);
-
+const ProjectsPage = () => {
   const projects = [
     {
       title: "WiseChoice - E-commerce Analytics Platform",
@@ -56,21 +54,25 @@ const Projects = () => {
     }
   ];
 
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
-
   return (
-    <section id="projects" className="section-padding bg-accent/50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 md:px-6 py-12">
+        <div className="mb-8">
+          <Link to="/">
+            <Button variant="outline" className="mb-6">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Home
+            </Button>
+          </Link>
+          <h1 className="text-4xl font-bold mb-4">All Projects</h1>
+          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mb-6"></div>
           <p className="text-lg text-muted-foreground">
-            Showcasing my work in AI/ML, computer vision, and full-stack development
+            Complete showcase of my work in AI/ML, computer vision, and full-stack development
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard 
               key={index}
               title={project.title}
@@ -83,44 +85,9 @@ const Projects = () => {
             />
           ))}
         </div>
-        
-        {projects.length > 3 && (
-          <div className="text-center mt-12">
-            <Button 
-              onClick={() => setShowAll(!showAll)}
-              variant="outline"
-              className="px-8 py-2 mb-4 mr-4"
-            >
-              {showAll ? "Show Less" : `View More Projects (${projects.length - 3} more)`}
-            </Button>
-            <Button 
-              asChild
-              className="px-8 py-2 mb-4"
-            >
-              <Link to="/projects">
-                View All Projects
-              </Link>
-            </Button>
-          </div>
-        )}
-        
-        <div className="text-center">
-          <p className="text-muted-foreground mb-4">
-            These are key projects demonstrating my AI/ML expertise. Visit my GitHub for more implementations.
-          </p>
-          <Link 
-            to="/resume" 
-            className="text-primary hover:text-primary/80 font-medium inline-flex items-center"
-          >
-            View Detailed Projects
-            <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Projects;
+export default ProjectsPage;
