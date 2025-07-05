@@ -119,7 +119,7 @@ const Certifications = () => {
               asChild
               className="px-8 py-2"
             >
-              <Link to="/certifications">
+              <Link to="/certifications" target="_blank" rel="noopener noreferrer">
                 View All Certifications
               </Link>
             </Button>

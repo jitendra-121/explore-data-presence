@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";
@@ -97,7 +96,7 @@ const Projects = () => {
               asChild
               className="px-8 py-2 mb-4"
             >
-              <Link to="/projects">
+              <Link to="/projects" target="_blank" rel="noopener noreferrer">
                 View All Projects
               </Link>
             </Button>
