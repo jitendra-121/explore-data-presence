@@ -68,6 +68,33 @@ export type Database = {
         }
         Relationships: []
       }
+      resumes: {
+        Row: {
+          file_path: string
+          file_size: number | null
+          filename: string
+          id: string
+          is_current: boolean | null
+          uploaded_at: string
+        }
+        Insert: {
+          file_path: string
+          file_size?: number | null
+          filename: string
+          id?: string
+          is_current?: boolean | null
+          uploaded_at?: string
+        }
+        Update: {
+          file_path?: string
+          file_size?: number | null
+          filename?: string
+          id?: string
+          is_current?: boolean | null
+          uploaded_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

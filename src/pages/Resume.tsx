@@ -1,20 +1,72 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ResumeDropzone from "@/components/ResumeDropzone";
 import { ArrowLeft, Download, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Resume = () => {
+  const [currentResumeUrl, setCurrentResumeUrl] = useState<string | null>(null);
+  const [showDropzone, setShowDropzone] = useState(false);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Load current resume on component mount
+    loadCurrentResume();
+  }, []);
+
+  const loadCurrentResume = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('resumes')
+        .select('file_path')
+        .eq('is_current', true)
+        .single();
+
+      if (data && !error) {
+        const { data: urlData } = supabase.storage
+          .from('resumes')
+          .getPublicUrl(data.file_path);
+        setCurrentResumeUrl(urlData.publicUrl);
+      }
+    } catch (error) {
+      console.error('Error loading current resume:', error);
+    }
+  };
+
   const handleDownloadResume = () => {
-    const resumeUrl = "/resume.pdf";
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = "Jitendra_Aluri_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (currentResumeUrl) {
+      const link = document.createElement('a');
+      link.href = currentResumeUrl;
+      link.download = "Jitendra_Aluri_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      // Fallback to original resume
+      const resumeUrl = "/resume.pdf";
+      const link = document.createElement('a');
+      link.href = resumeUrl;
+      link.download = "Jitendra_Aluri_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const handleResumeUploaded = (resumeUrl: string) => {
+    setCurrentResumeUrl(resumeUrl);
+    setShowDropzone(false);
+    toast({
+      title: "Resume updated!",
+      description: "Your resume has been successfully updated.",
+    });
   };
 
   return (
@@ -36,15 +88,22 @@ const Resume = () => {
               Download PDF
             </Button>
             <Button 
-              onClick={handleDownloadResume}
+              onClick={() => setShowDropzone(!showDropzone)}
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-white"
             >
               <Download className="h-4 w-4 mr-2" />
-              Resume
+              Update Resume
             </Button>
           </div>
         </div>
+
+        {/* Drag and Drop Zone */}
+        {showDropzone && (
+          <div className="mb-8">
+            <ResumeDropzone onResumeUploaded={handleResumeUploaded} />
+          </div>
+        )}
         
         <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
           {/* Header */}
