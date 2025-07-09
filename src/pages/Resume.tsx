@@ -1,11 +1,11 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResumeDropzone from "@/components/ResumeDropzone";
-import { ArrowLeft, Download, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowLeft, Download, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -22,16 +22,20 @@ const Resume = () => {
 
   const loadCurrentResume = async () => {
     try {
+      console.log('Loading current resume...');
       const { data, error } = await supabase
         .from('resumes')
         .select('file_path')
         .eq('is_current', true)
         .maybeSingle();
 
+      console.log('Resume query result:', { data, error });
+
       if (data && !error) {
         const { data: urlData } = supabase.storage
           .from('resumes')
           .getPublicUrl(data.file_path);
+        console.log('Setting current resume URL:', urlData.publicUrl);
         setCurrentResumeUrl(urlData.publicUrl);
       }
     } catch (error) {
@@ -60,6 +64,7 @@ const Resume = () => {
   };
 
   const handleResumeUploaded = (resumeUrl: string) => {
+    console.log('Resume uploaded successfully:', resumeUrl);
     setCurrentResumeUrl(resumeUrl);
     setShowDropzone(false);
     toast({
@@ -91,8 +96,8 @@ const Resume = () => {
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-white"
             >
-              <Download className="h-4 w-4 mr-2" />
-              Update Resume
+              <Upload className="h-4 w-4 mr-2" />
+              {showDropzone ? 'Hide Upload' : 'Update Resume'}
             </Button>
           </div>
         </div>
@@ -104,6 +109,7 @@ const Resume = () => {
           </div>
         )}
         
+        {/* Resume Content */}
         <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
           {/* Header */}
           <div className="text-center mb-8">
@@ -111,11 +117,11 @@ const Resume = () => {
             <p className="text-muted-foreground mt-2">Guntur-522017, Andhra Pradesh</p>
             <div className="flex items-center justify-center gap-4 mt-3">
               <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-1 text-primary" />
+                <span className="h-4 w-4 mr-1 text-primary">📞</span>
                 <span>9391057056</span>
               </div>
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-1 text-primary" />
+                <span className="h-4 w-4 mr-1 text-primary">✉️</span>
                 <a href="mailto:jitendraaluri10@gmail.com" className="hover:text-primary">jitendraaluri10@gmail.com</a>
               </div>
             </div>
