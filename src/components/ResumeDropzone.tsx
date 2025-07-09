@@ -18,6 +18,8 @@ const ResumeDropzone = ({ onResumeUploaded }: ResumeDropzoneProps) => {
     const file = acceptedFiles[0];
     if (!file) return;
 
+    console.log('File dropped:', file.name, file.type, file.size);
+
     // Validate file type
     if (file.type !== 'application/pdf') {
       toast({
@@ -46,6 +48,8 @@ const ResumeDropzone = ({ onResumeUploaded }: ResumeDropzoneProps) => {
       const fileName = `resume_${timestamp}.pdf`;
       const filePath = `public/${fileName}`;
 
+      console.log('Uploading file to:', filePath);
+
       // Upload file to Supabase storage
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('resumes')
@@ -55,13 +59,24 @@ const ResumeDropzone = ({ onResumeUploaded }: ResumeDropzoneProps) => {
         });
 
       if (uploadError) {
+        console.error('Upload error:', uploadError);
         throw uploadError;
       }
+
+      console.log('Upload successful:', uploadData);
 
       // Get public URL
       const { data: urlData } = supabase.storage
         .from('resumes')
         .getPublicUrl(filePath);
+
+      console.log('Public URL:', urlData.publicUrl);
+
+      // Mark previous resumes as not current
+      await supabase
+        .from('resumes')
+        .update({ is_current: false })
+        .neq('file_path', filePath);
 
       // Save resume metadata to database
       const { error: dbError } = await supabase
@@ -74,14 +89,11 @@ const ResumeDropzone = ({ onResumeUploaded }: ResumeDropzoneProps) => {
         });
 
       if (dbError) {
+        console.error('Database error:', dbError);
         throw dbError;
       }
 
-      // Mark previous resumes as not current
-      await supabase
-        .from('resumes')
-        .update({ is_current: false })
-        .neq('file_path', filePath);
+      console.log('Resume metadata saved to database');
 
       onResumeUploaded(urlData.publicUrl);
       

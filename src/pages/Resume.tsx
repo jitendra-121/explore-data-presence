@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResumeDropzone from "@/components/ResumeDropzone";
@@ -27,7 +26,7 @@ const Resume = () => {
         .from('resumes')
         .select('file_path')
         .eq('is_current', true)
-        .single();
+        .maybeSingle();
 
       if (data && !error) {
         const { data: urlData } = supabase.storage
