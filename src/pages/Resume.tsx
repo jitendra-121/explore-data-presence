@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResumeDropzone from "@/components/ResumeDropzone";
@@ -10,6 +9,8 @@ import ResumeProjects from "@/components/resume/ResumeProjects";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Resume = () => {
   const [currentResumeUrl, setCurrentResumeUrl] = useState<string | null>(null);
@@ -90,9 +91,10 @@ const Resume = () => {
     });
   };
 
-  const handlePdfError = () => {
-    console.error('PDF failed to load, falling back to download link');
-    setPdfError(true);
+  const handleViewPdf = () => {
+    if (currentResumeUrl) {
+      window.open(currentResumeUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
@@ -113,29 +115,22 @@ const Resume = () => {
         )}
         
         {currentResumeUrl && !showStaticContent ? (
-          <div className="bg-white rounded-lg shadow-md p-4 mb-12 animate-fade-in">
-            {pdfError ? (
-              <div className="text-center p-8">
-                <p className="text-lg mb-4">PDF preview not available</p>
-                <a
-                  href={currentResumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
-                >
-                  Open PDF in new tab
-                </a>
+          <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold mb-4">Current Resume</h2>
+              <p className="text-muted-foreground mb-6">
+                Your resume has been uploaded successfully. Click the button below to view it.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <Button onClick={handleViewPdf} className="flex items-center gap-2">
+                  <ExternalLink className="h-4 w-4" />
+                  View Resume
+                </Button>
+                <Button onClick={handleDownloadResume} variant="outline">
+                  Download PDF
+                </Button>
               </div>
-            ) : (
-              <div className="w-full h-[800px] border rounded">
-                <iframe
-                  src={`${currentResumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                  className="w-full h-full rounded"
-                  title="Current Resume"
-                  onError={handlePdfError}
-                />
-              </div>
-            )}
+            </div>
           </div>
         ) : (
           <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
