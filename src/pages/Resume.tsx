@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 const Resume = () => {
   const [currentResumeUrl, setCurrentResumeUrl] = useState<string | null>(null);
   const [showDropzone, setShowDropzone] = useState(false);
+  const [showStaticContent, setShowStaticContent] = useState(true);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -37,9 +38,13 @@ const Resume = () => {
           .getPublicUrl(data.file_path);
         console.log('Setting current resume URL:', urlData.publicUrl);
         setCurrentResumeUrl(urlData.publicUrl);
+        setShowStaticContent(false); // Hide static content when PDF is available
+      } else {
+        setShowStaticContent(true); // Show static content when no PDF is uploaded
       }
     } catch (error) {
       console.error('Error loading current resume:', error);
+      setShowStaticContent(true);
     }
   };
 
@@ -71,6 +76,7 @@ const Resume = () => {
     console.log('Resume uploaded successfully:', resumeUrl);
     setCurrentResumeUrl(resumeUrl);
     setShowDropzone(false);
+    setShowStaticContent(false); // Hide static content and show PDF
     toast({
       title: "Resume updated!",
       description: "Your resume has been successfully updated.",
@@ -94,12 +100,24 @@ const Resume = () => {
           </div>
         )}
         
-        <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
-          <ResumeHeader />
-          <ResumeEducation />
-          <ResumeSkills />
-          <ResumeProjects />
-        </div>
+        {currentResumeUrl && !showStaticContent ? (
+          <div className="bg-white rounded-lg shadow-md p-4 mb-12 animate-fade-in">
+            <div className="w-full h-[800px] border rounded">
+              <iframe
+                src={currentResumeUrl}
+                className="w-full h-full rounded"
+                title="Current Resume"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
+            <ResumeHeader />
+            <ResumeEducation />
+            <ResumeSkills />
+            <ResumeProjects />
+          </div>
+        )}
       </main>
       
       <Footer />
