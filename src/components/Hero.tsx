@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -39,11 +40,14 @@ const Hero = () => {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Hi, I'm <span className="gradient-text">Jitendra Aluri </span>
             </h1>
-            <h2 className={`text-2xl md:text-4xl mb-6 text-primary/80 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>AI/ML Entusiast & Computer Science Student</h2>
+            <h2 className={`text-2xl md:text-4xl mb-8 text-primary/80 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>AI/ML Entusiast & Computer Science Student</h2>
             
-            <p className={`text-lg text-muted-foreground mb-8 max-w-2xl leading-relaxed transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              I'm someone who finds deep satisfaction in building — not just apps, but systems that solve real problems. I don't chase titles or trends; I chase that feeling of getting things to work end-to-end. I want to grow as a full stack AI developer — someone who can architect, train, ship, and scale. My passion lies at the intersection of AI and healthcare, and I'm driven by the idea that code can help save lives. I'm looking for an environment where I can stay hands-on, contribute across layers — from research to deployment — and be part of something meaningful from the ground up.
-            </p>
+            <div className={`mb-8 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h3 className="text-xl font-semibold text-primary mb-4">Career Objective</h3>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-justify max-w-2xl bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 shadow-lg">
+                I'm someone who finds deep satisfaction in building — not just apps, but systems that solve real problems. I don't chase titles or trends; I chase that feeling of getting things to work end-to-end. I want to grow as a full stack AI developer — someone who can architect, train, ship, and scale. My passion lies at the intersection of AI and healthcare, and I'm driven by the idea that code can help save lives. I'm looking for an environment where I can stay hands-on, contribute across layers — from research to deployment — and be part of something meaningful from the ground up.
+              </p>
+            </div>
             
             <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <Button className="gradient-bg text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('projects')}>
