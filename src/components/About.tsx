@@ -1,17 +1,12 @@
-
 import { Card } from "@/components/ui/card";
 import { Briefcase, Code, FileText, Award } from "lucide-react";
-
 const About = () => {
-  return (
-    <section id="about" className="section-padding bg-gradient-to-br from-accent/50 to-primary/5">
+  return <section id="about" className="section-padding bg-gradient-to-br from-accent/50 to-primary/5">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
           <div className="h-1 w-20 gradient-bg mx-auto mb-6 rounded-full"></div>
-          <p className="text-lg text-muted-foreground">
-            A passionate AI/ML engineer specializing in Computer Vision and Deep Learning
-          </p>
+          <p className="text-lg text-muted-foreground">A passionate AI/ML student  specializing in Computer Vision, Deep Learning and Generative AI</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -25,7 +20,9 @@ const About = () => {
             </p>
           </Card>
           
-          <Card className="animate-slide-up p-6 tech-card border-0 shadow-xl" style={{ animationDelay: "0.2s" }}>
+          <Card className="animate-slide-up p-6 tech-card border-0 shadow-xl" style={{
+          animationDelay: "0.2s"
+        }}>
             <h3 className="text-xl font-bold mb-4 gradient-text">Education & Experience</h3>
             
             <div className="space-y-4">
@@ -61,8 +58,6 @@ const About = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
