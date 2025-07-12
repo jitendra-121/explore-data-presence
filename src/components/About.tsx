@@ -15,9 +15,7 @@ const About = () => {
             <p className="mb-4">
               I'm currently pursuing my B.Tech in Computer Science Engineering with specialization in Artificial Intelligence and Machine Learning at Vignan's Foundation For Science, Technology & Research (CGPA: 7.70).
             </p>
-            <p>
-              With expertise in Python, TensorFlow, PyTorch, and Computer Vision, I'm passionate about developing AI solutions that solve real-world problems, particularly in medical imaging and e-commerce analytics.
-            </p>
+            <p>With expertise in Python, TensorFlow, PyTorch, and Computer Vision, I'm passionate about developing AI solutions that solve real-world problems, particularly in medical imaging and other aspects</p>
           </Card>
           
           <Card className="animate-slide-up p-6 tech-card border-0 shadow-xl" style={{
