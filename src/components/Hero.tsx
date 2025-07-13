@@ -1,3 +1,5 @@
+
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -20,34 +22,34 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-24">
-      {/* Full-width banner image with proper spacing from navbar */}
-      <div className="w-full overflow-hidden mb-8">
+    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20">
+      {/* Full-width banner image with left-to-right animation - with reduced top margin */}
+      <div className="w-full overflow-hidden mt-4">
         <div className={`w-full transition-all duration-1500 ${isLoaded ? 'translate-x-0' : '-translate-x-full'}`}>
-          <img src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" alt="Crafting AI-Driven Solutions for a Better World" className="w-full h-48 md:h-64 object-cover object-top shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow" />
+          <img src="/lovable-uploads/70462249-80ef-436b-9dc2-63c2011e903f.png" alt="Crafting AI-Driven Solutions for a Better World" className="w-full h-40 md:h-56 object-cover object-top shadow-xl hover:shadow-2xl transition-all duration-500 neon-glow" />
         </div>
       </div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
-          <Avatar className={`w-52 h-52 md:w-64 md:h-64 border-4 border-primary/50 shadow-2xl transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
+      <div className="container mx-auto px-4 md:px-6 relative z-10 mt-4">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10">
+          <Avatar className={`w-48 h-48 border-4 border-primary/50 shadow-2xl transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
             <AvatarImage alt="Jitendra Aluri Chowdary" src="/lovable-uploads/5b7502da-a465-4d09-8179-f3883bbb3e61.jpg" className="object-contain" />
             <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white text-xl">JAC</AvatarFallback>
           </Avatar>
           
-          <div className={`max-w-4xl transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center md:text-left">
+          <div className={`max-w-3xl transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Hi, I'm <span className="gradient-text">Jitendra Aluri </span>
             </h1>
-            <h2 className={`text-2xl md:text-4xl mb-10 text-primary/80 transition-all duration-1000 delay-300 text-center md:text-left ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>AI/ML Entusiast & Computer Science Student</h2>
+            <h2 className={`text-2xl md:text-4xl mb-10 text-primary/80 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>AI/ML Entusiast & Computer Science Student</h2>
             
             <div className={`mb-10 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-justify max-w-4xl font-light tracking-wide">
+              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-justify max-w-4xl mx-auto font-light tracking-wide">
                 I'm someone who finds deep satisfaction in building — not just apps, but systems that solve real problems. I don't chase titles or trends; I chase that feeling of getting things to work end-to-end. I want to grow as a full stack AI developer — someone who can architect, train, ship, and scale. My passion lies at the intersection of AI and healthcare, and I'm driven by the idea that code can help save lives. I'm looking for an environment where I can stay hands-on, contribute across layers — from research to deployment — and be part of something meaningful from the ground up.
               </p>
             </div>
             
-            <div className={`flex flex-wrap gap-4 justify-center md:justify-start transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <Button className="gradient-bg text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('projects')}>
                 View Projects
               </Button>
@@ -74,3 +76,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
