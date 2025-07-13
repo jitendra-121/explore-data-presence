@@ -1,11 +1,10 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ResumeDropzone from "@/components/ResumeDropzone";
 import ResumeControls from "@/components/resume/ResumeControls";
 import ResumeHeader from "@/components/resume/ResumeHeader";
 import ResumeEducation from "@/components/resume/ResumeEducation";
 import ResumeSkills from "@/components/resume/ResumeSkills";
 import ResumeProjects from "@/components/resume/ResumeProjects";
+import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -99,9 +98,7 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      
-      <main className="container mx-auto px-4 py-20 md:px-6">
+      <main className="container mx-auto px-4 py-8 md:px-6">
         <ResumeControls 
           onDownload={handleDownloadResume}
           onToggleDropzone={handleToggleDropzone}
@@ -115,22 +112,30 @@ const Resume = () => {
         )}
         
         {currentResumeUrl && !showStaticContent ? (
-          <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold mb-4">Current Resume</h2>
-              <p className="text-muted-foreground mb-6">
-                Your resume has been uploaded successfully. Click the button below to view it.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <Button onClick={handleViewPdf} className="flex items-center gap-2">
-                  <ExternalLink className="h-4 w-4" />
-                  View Resume
-                </Button>
-                <Button onClick={handleDownloadResume} variant="outline">
-                  Download PDF
-                </Button>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden animate-fade-in">
+            <iframe
+              src={currentResumeUrl}
+              className="w-full h-[800px] border-0"
+              title="Resume PDF"
+              onError={() => setPdfError(true)}
+            />
+            {pdfError && (
+              <div className="p-8 text-center">
+                <h2 className="text-2xl font-bold mb-4">Current Resume</h2>
+                <p className="text-muted-foreground mb-6">
+                  Your resume has been uploaded successfully. Click the button below to view it.
+                </p>
+                <div className="flex gap-4 justify-center">
+                  <Button onClick={handleViewPdf} className="flex items-center gap-2">
+                    <ExternalLink className="h-4 w-4" />
+                    View Resume
+                  </Button>
+                  <Button onClick={handleDownloadResume} variant="outline">
+                    Download PDF
+                  </Button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         ) : (
           <div className="bg-white rounded-lg shadow-md p-8 mb-12 animate-fade-in">
