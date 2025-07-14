@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Code, Menu, X, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "glass-effect shadow-lg" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 font-bold text-lg">
           <Code className="h-6 w-6 text-primary" />
@@ -46,6 +47,7 @@ const Navbar = () => {
           <Link to="/resume" className="text-sm hover:text-primary transition-colors flex items-center">
             <FileText className="h-4 w-4 mr-1" /> CV
           </Link>
+          <ThemeToggle />
         </div>
         
         <button className="md:hidden" onClick={toggleMenu}>
@@ -55,7 +57,7 @@ const Navbar = () => {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-20 md:hidden">
+        <div className="fixed inset-0 glass-effect z-40 pt-20 md:hidden">
           <div className="flex flex-col items-center gap-6 p-4">
             <a href="#home" className="text-lg hover:text-primary" onClick={toggleMenu}>Home</a>
             <a href="#about" className="text-lg hover:text-primary" onClick={toggleMenu}>About</a>
@@ -69,6 +71,7 @@ const Navbar = () => {
             <Link to="/resume" className="text-lg hover:text-primary flex items-center" onClick={toggleMenu}>
               <FileText className="h-4 w-4 mr-1" /> CV
             </Link>
+            <ThemeToggle />
           </div>
         </div>
       )}

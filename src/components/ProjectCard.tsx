@@ -32,7 +32,7 @@ const ProjectCard = ({
   impact
 }: ProjectCardProps) => {
   return (
-    <Card className="overflow-hidden border border-border hover:shadow-lg transition-all animate-slide-up" style={{
+    <Card className="overflow-hidden liquid-glass hover-lift animate-slide-up" style={{
       animationDelay: `${index * 0.1}s`
     }}>
       <div className="h-48 w-full bg-muted overflow-hidden">

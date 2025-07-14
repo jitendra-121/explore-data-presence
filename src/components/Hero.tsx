@@ -30,7 +30,7 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 mt-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-10">
-          <Avatar className={`w-48 h-48 border-4 border-primary/50 shadow-2xl transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
+          <Avatar className={`w-48 h-48 border-4 border-primary/30 liquid-glass shadow-2xl transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
             <AvatarImage alt="Jitendra Aluri Chowdary" src="/lovable-uploads/5b7502da-a465-4d09-8179-f3883bbb3e61.jpg" className="object-contain" />
             <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white text-xl">JAC</AvatarFallback>
           </Avatar>
@@ -42,16 +42,18 @@ const Hero = () => {
             <h2 className={`text-2xl md:text-4xl mb-10 text-primary/80 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>AI/ML Entusiast & Computer Science Student</h2>
             
             <div className={`mb-10 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-justify max-w-4xl mx-auto font-light tracking-wide">
-                I'm someone who finds deep satisfaction in building — not just apps, but systems that solve real problems. I don't chase titles or trends; I chase that feeling of getting things to work end-to-end. I want to grow as a full stack AI developer — someone who can architect, train, ship, and scale. My passion lies at the intersection of AI and healthcare, and I'm driven by the idea that code can help save lives. I'm looking for an environment where I can stay hands-on, contribute across layers — from research to deployment — and be part of something meaningful from the ground up.
-              </p>
+              <div className="liquid-glass p-8 rounded-2xl">
+                <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-justify max-w-4xl mx-auto font-light tracking-wide">
+                  I'm someone who finds deep satisfaction in building — not just apps, but systems that solve real problems. I don't chase titles or trends; I chase that feeling of getting things to work end-to-end. I want to grow as a full stack AI developer — someone who can architect, train, ship, and scale. My passion lies at the intersection of AI and healthcare, and I'm driven by the idea that code can help save lives. I'm looking for an environment where I can stay hands-on, contribute across layers — from research to deployment — and be part of something meaningful from the ground up.
+                </p>
+              </div>
             </div>
             
             <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <Button className="gradient-bg text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('projects')}>
+              <Button className="gradient-bg text-white liquid-glass hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('projects')}>
                 View Projects
               </Button>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('contact')}>
+              <Button variant="outline" className="glass-effect border-primary/50 text-primary hover:bg-primary/10 hover:shadow-xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('contact')}>
                 Contact Me
               </Button>
             </div>
